@@ -49,10 +49,11 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="maps\Map01.cs" />
+    <Compile Include="maps\Map.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="tanks\Player.cs" />
     <Compile Include="tanks\Tank.cs" />
+    <Compile Include="terrain\TileSetMaker.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

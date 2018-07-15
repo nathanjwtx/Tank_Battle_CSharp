@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Terrain/TileSetMaker.gd" type="Script" id=1]
+[ext_resource path="res://terrain/TileSetMaker.cs" type="Script" id=1]
 [ext_resource path="res://Assets/Tilesheet/terrainTiles_retina.png" type="Texture" id=2]
 
 [node name="TileSetMaker" type="Node" index="0"]

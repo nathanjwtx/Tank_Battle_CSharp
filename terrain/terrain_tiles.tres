@@ -1,6 +1,10 @@
-[gd_resource type="TileSet" load_steps=2 format=2]
+[gd_resource type="TileSet" load_steps=3 format=2]
 
 [ext_resource path="res://Assets/Tilesheet/terrainTiles_retina.png" type="Texture" id=1]
+
+[sub_resource type="CSharpScript" id=1]
+
+script/source = ""
 
 [resource]
 
@@ -364,4 +368,5 @@
 39/occluder_offset = Vector2( 0, 0 )
 39/navigation_offset = Vector2( 0, 0 )
 39/shapes = [  ]
+script = SubResource( 1 )
 

@@ -12,6 +12,7 @@ extents = Vector2( 39, 37 )
 [node name="Player" index="0" instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
+Speed = 40
 RotationSpeed = 5.0
 
 [node name="Body" parent="." index="0"]
