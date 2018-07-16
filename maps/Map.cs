@@ -22,5 +22,16 @@ public class Map : Node2D
         camera.LimitRight = Convert.ToInt32(mapLimits.End.x * mapCellsize.x);
         camera.LimitTop = Convert.ToInt32(mapLimits.Position.y * mapCellsize.y);
         camera.LimitBottom = Convert.ToInt32(mapLimits.End.y * mapCellsize.y);
-    } 
+    }
+
+	public void _on_Tank_shoot(PackedScene bullet, Vector2 _position, Vector2 _direction)
+	{
+	    GD.Print("boom boom");
+		Bullet b = (Bullet) bullet.Instance();
+		AddChild(b);
+		b.Start(_position, _direction);
+	}
 }
+
+
+

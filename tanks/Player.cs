@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using Godot;
 
 public class Player : Tank
@@ -40,5 +41,18 @@ public class Player : Tank
             // ReSharper disable once PossibleLossOfFraction
             Velocity = new Vector2(-Speed/2, 0).Rotated(Rotation);
         }
+
+        if (Input.IsActionJustPressed("shoot"))
+        {
+            GD.Print("click");
+            Shoot();
+        }
+    }
+    
+    public void _on_GunTimer_timeout()
+    {
+        CanShoot = true;
     }
 }
+
+

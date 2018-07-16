@@ -49,6 +49,8 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="bullets\Bullet.cs" />
+    <Compile Include="bullets\PlayerBullet.cs" />
     <Compile Include="maps\Map.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="tanks\EnemyTank.cs" />
