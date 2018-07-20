@@ -38,10 +38,6 @@ public class TestBullet : Area2D
     {
         var target = body as Node2D; 
         Explode();
-        if (target != null && target.HasMethod("take_damage"))
-        {
-//            target.take_damage(Damage);
-        }
     }
 
     private void _on_Lifetime_timeout()

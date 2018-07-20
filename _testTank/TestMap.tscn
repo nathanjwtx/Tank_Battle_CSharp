@@ -36,12 +36,13 @@ occluder_light_mask = 1
 format = 1
 tile_data = PoolIntArray( -65536, 0, 0, -65534, 0, 0, -65532, 0, 0, -65530, 0, 0, -65528, 0, 0, -65526, 0, 0, -65524, 0, 0, -65522, 0, 0, -65520, 0, 0, 65536, 0, 0, 65538, 0, 0, 65540, 13, 0, 65542, 2, 0, 65544, 2, 0, 65546, 2, 0, 65548, 14, 0, 65550, 0, 0, 65552, 0, 0, 196608, 0, 0, 196610, 0, 0, 196612, 1, 0, 196614, 0, 0, 196616, 0, 0, 196618, 0, 0, 196620, 1, 0, 196622, 0, 0, 196624, 0, 0, 327680, 0, 0, 327682, 0, 0, 327684, 1, 0, 327686, 0, 0, 327688, 0, 0, 327690, 0, 0, 327692, 1, 0, 327694, 0, 0, 327696, 0, 0, 458752, 0, 0, 458754, 0, 0, 458756, 15, 0, 458758, 2, 0, 458760, 2, 0, 458762, 2, 0, 458764, 16, 0, 458766, 0, 0, 458768, 0, 0, 589824, 0, 0, 589826, 0, 0, 589828, 0, 0, 589830, 0, 0, 589832, 0, 0, 589834, 0, 0, 589836, 0, 0, 589838, 0, 0, 589840, 0, 0 )
 
-[node name="Path2D" type="Path2D" parent="TileMap" index="0"]
+[node name="Path2D" type="Path2D" parent="." index="1"]
 
 self_modulate = Color( 0.5, 0.6, 1, 0.7 )
+position = Vector2( 0, 2 )
 curve = SubResource( 1 )
 
-[node name="PathFollow2D" type="PathFollow2D" parent="TileMap/Path2D" index="0"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" index="0"]
 
 position = Vector2( 319.501, 181.592 )
 rotation = 1.58131
@@ -53,10 +54,8 @@ cubic_interp = true
 loop = true
 lookahead = 4.0
 
-[node name="TestTank" parent="TileMap/Path2D/PathFollow2D" index="0" instance=ExtResource( 3 )]
+[node name="TestTank" parent="Path2D/PathFollow2D" index="0" instance=ExtResource( 3 )]
 
-Speed = 0
-
-[connection signal="shoot" from="TileMap/Path2D/PathFollow2D/TestTank" to="." method="_on_TestTank_shoot"]
+[connection signal="shoot" from="Path2D/PathFollow2D/TestTank" to="." method="_on_TestTank_shoot"]
 
 

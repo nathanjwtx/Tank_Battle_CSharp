@@ -61,6 +61,7 @@
     <Compile Include="tanks\Tank.cs" />
     <Compile Include="terrain\TileSetMaker.cs" />
     <Compile Include="_testTank\TestBullet.cs" />
+    <Compile Include="_testTank\TestMap.cs" />
     <Compile Include="_testTank\TestTank.cs" />
     <Compile Include="_testTank\TestTankBase.cs" />
   </ItemGroup>

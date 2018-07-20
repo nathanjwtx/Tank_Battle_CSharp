@@ -4,7 +4,7 @@
 [ext_resource path="res://_testTank/TestBullet.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/Spritesheet/onlyObjects_retina_rotated.png" type="Texture" id=3]
 
-[node name="TestTank" type="KinematicBody2D" index="0"]
+[node name="TestTank" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 1
@@ -16,11 +16,11 @@ Speed = 100
 
 [node name="Body" type="Sprite" parent="." index="0"]
 
-position = Vector2( 295.439, 284.888 )
+position = Vector2( 0.438995, 0.888 )
 texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 393, 438.25, 103.75, 104.25 )
-_sections_unfolded = [ "Region" ]
+_sections_unfolded = [ "Offset", "Region" ]
 
 [node name="Muzzle" type="Position2D" parent="Body" index="0"]
 
@@ -32,8 +32,6 @@ process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = false
-
-[connection signal="shoot" from="." to="." method="_on_TestTank_shoot"]
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
