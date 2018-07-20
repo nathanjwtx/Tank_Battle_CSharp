@@ -14,10 +14,6 @@ public class TestTankBase : KinematicBody2D
     
     public override void _Ready()
     {
-//        GunTimer = (Timer) GetNode("Timer");
-//        GunTimer.WaitTime = 3;
-//        GD.Print("Start");
-//        GunTimer.Start();
     }
 
     public override void _Process(float delta)
@@ -41,13 +37,4 @@ public class TestTankBase : KinematicBody2D
         var dir = new Vector2(1, 0).Rotated(muzzle.GlobalRotation);
         EmitSignal("shoot", Bullet, muzzle.GlobalPosition, dir);
     }
-    
-//    private void _on_TestTank_shoot(PackedScene bullet, Vector2 _position, Vector2 _direction)
-//    {
-//        Bullet b = (Bullet) bullet.Instance();
-//        AddChild(b);
-//        b.Start(_position, _direction);
-//    }
-    
-
 }
