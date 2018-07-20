@@ -48,11 +48,6 @@ public class Player : Tank
             Shoot();
         }
     }
-    
-    public void _on_GunTimer_timeout()
-    {
-        CanShoot = true;
-    }
 }
 
 

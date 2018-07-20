@@ -4,16 +4,18 @@ public class EnemyTank : Tank
 {
 
     [Export] public float TurretSpeed = 1;
-    [Export] public int DetectRadius = 400;
+    [Export] public int DetectRadius;
     
     public Node Parent;
     public PathFollow2D Path;
     public Sprite EnemyTurret;
-
+    public Timer EnemyGunTimer;
     public KinematicBody2D Target;
     
     public override void _Ready()
     {
+        EnemyGunTimer = (Timer) GetNode("GunTimer");
+        EnemyGunTimer.WaitTime = GunCoolDown;
         Parent = GetParent();
         EnemyTurret = (Sprite) GetNode("Turret");
         var circle = new CircleShape2D();
@@ -38,6 +40,13 @@ public class EnemyTank : Tank
             Vector2 currentDirection = new Vector2(1, 0).Rotated(EnemyTurret.GlobalRotation);
             EnemyTurret.GlobalRotation =
                 currentDirection.LinearInterpolate(targetDirection, TurretSpeed * delta).Angle();
+            if (targetDirection.Dot(currentDirection) > 0.9)
+            {
+                GD.Print("Enemy boom");
+                Shoot();
+                CanShoot = false;
+                EnemyGunTimer.Start();
+            }
         }
     }
 
@@ -68,5 +77,10 @@ public class EnemyTank : Tank
         {
             Target = null;
         }
+    }
+    
+    private void _on_GunTimer_timeout()
+    {
+        CanShoot = true;
     }
 }

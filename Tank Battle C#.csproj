@@ -50,13 +50,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="bullets\Bullet.cs" />
+    <Compile Include="bullets\EnemyBullet.cs" />
     <Compile Include="bullets\PlayerBullet.cs" />
     <Compile Include="maps\Map.cs" />
+    <Compile Include="maps\Map02.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="tanks\EnemyTank.cs" />
+    <Compile Include="tanks\EnemyTank01.cs" />
     <Compile Include="tanks\Player.cs" />
     <Compile Include="tanks\Tank.cs" />
     <Compile Include="terrain\TileSetMaker.cs" />
+    <Compile Include="_testTank\TestBullet.cs" />
+    <Compile Include="_testTank\TestTank.cs" />
+    <Compile Include="_testTank\TestTankBase.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

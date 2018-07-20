@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://tanks/Tank.tscn" type="PackedScene" id=1]
+[ext_resource path="res://tanks/EnemyTank.cs" type="Script" id=2]
+[ext_resource path="res://bullets/EnemyBullet.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/Spritesheet/onlyObjects_retina_rotated.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 40.4545, 17.797 )
+
+[node name="EnemyTank02" index="0" instance=ExtResource( 1 )]
+
+collision_layer = 4
+collision_mask = 3
+script = ExtResource( 2 )
+Bullet = ExtResource( 3 )
+Speed = 50
+Health = 0
+TurretSpeed = 1.0
+DetectRadius = 400
+
+[node name="Body" parent="." index="0"]
+
+position = Vector2( 0, -1.26616 )
+scale = Vector2( 1, 1.03332 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 268, 186.125, 80, 76 )
+_sections_unfolded = [ "Region" ]
+
+[node name="CollisionShape2D" parent="." index="1"]
+
+position = Vector2( 0, -1.21712 )
+scale = Vector2( 1, 2.2091 )
+shape = SubResource( 1 )
+
+[node name="Turret" parent="." index="3"]
+
+texture = ExtResource( 4 )
+offset = Vector2( 20, 0 )
+region_enabled = true
+region_rect = Rect2( 452.125, 33.875, 60, 24 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="Muzzle" parent="Turret" index="0"]
+
+position = Vector2( 60, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="DetectRadius" type="Area2D" parent="." index="4"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_mask = 2
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectRadius" index="0"]
+
+_sections_unfolded = [ "Transform" ]
+
+[connection signal="body_entered" from="DetectRadius" to="." method="_on_DetectRadius_body_entered"]
+
+[connection signal="body_exited" from="DetectRadius" to="." method="_on_DetectRadius_body_exited"]
+
+

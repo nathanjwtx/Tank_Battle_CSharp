@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Tanks/Tank.tscn" type="PackedScene" id=1]
-[ext_resource path="res://tanks/EnemyTank.cs" type="Script" id=2]
+[ext_resource path="res://tanks/EnemyTank01.cs" type="Script" id=2]
 [ext_resource path="res://Assets/Spritesheet/onlyObjects_retina_rotated.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -9,22 +9,14 @@
 custom_solver_bias = 0.0
 extents = Vector2( 41.0486, 38.4966 )
 
-[sub_resource type="CircleShape2D" id=2]
+[node name="EnemyTank" instance=ExtResource( 1 )]
 
-custom_solver_bias = 0.0
-radius = 144.112
-
-[node name="EnemyTank" index="0" instance=ExtResource( 1 )]
-
-collision_layer = 3
+collision_layer = 4
 collision_mask = 3
 script = ExtResource( 2 )
-_sections_unfolded = [ "Collision" ]
-Speed = 50
-GunCoolDown = 10.0
-Health = 0
+_sections_unfolded = [ "Collision", "Material", "Transform", "Visibility", "Z Index" ]
 TurretSpeed = 1.0
-DetectRadius = 400
+DetectRadius = 0
 
 [node name="Body" parent="." index="0"]
 
@@ -36,6 +28,10 @@ _sections_unfolded = [ "Region" ]
 [node name="CollisionShape2D" parent="." index="1"]
 
 shape = SubResource( 1 )
+
+[node name="GunTimer" parent="." index="2"]
+
+one_shot = true
 
 [node name="Turret" parent="." index="3"]
 
@@ -57,17 +53,15 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-collision_layer = 2
+collision_mask = 2
 audio_bus_override = false
 audio_bus_name = "Master"
-_sections_unfolded = [ "Collision" ]
+_sections_unfolded = [ "Collision", "Visibility" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectRadius" index="0"]
 
-shape = SubResource( 2 )
+_sections_unfolded = [ "Visibility" ]
 
-[connection signal="body_entered" from="DetectRadius" to="." method="_on_DetectRadius_body_entered"]
-
-[connection signal="body_exited" from="DetectRadius" to="." method="_on_DetectRadius_body_exited"]
+[connection signal="timeout" from="GunTimer" to="." method="_on_EnemyGunTimer_timeout"]
 
 

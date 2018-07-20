@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class Bullet : Area2D
+public class TestBullet : Area2D
 {
     [Export] public int Speed;
     [Export] public int Damage;
@@ -13,7 +13,6 @@ public class Bullet : Area2D
     public override void _Ready()
     {
         _timer = (Timer) GetNode("Lifetime");
-        GD.Print(Speed);
     }
 
     public void Start(Vector2 _position, Vector2 _direction)
@@ -21,10 +20,8 @@ public class Bullet : Area2D
         Position = _position;
         Rotation = _direction.Angle();
         _timer.WaitTime = Lifetime;
-        GD.Print(_timer.WaitTime);
         _timer.Start();
         Velocity = _direction * Speed;
-        GD.Print(Velocity);
     }
 
     public override void _Process(float delta)

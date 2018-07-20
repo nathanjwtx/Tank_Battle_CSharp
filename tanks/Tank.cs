@@ -12,7 +12,7 @@ public class Tank : KinematicBody2D
     [Signal]
     delegate void shoot();
     
-    [Export] public Area2D Bullet;
+    [Export] public PackedScene Bullet;
     [Export] public int Speed = 50;
     [Export] public float RotationSpeed = 10;
     [Export] public float GunCoolDown = 1;
@@ -25,9 +25,8 @@ public class Tank : KinematicBody2D
     
     public override void _Ready()
     {
-        GunTimer = (Timer) GetNode("GunTimer");
+        GunTimer = (Timer) GetNode("EnemyTank/GunTimer");
         GunTimer.WaitTime = GunCoolDown;
-
     }
 
     public override void _PhysicsProcess(float delta)
@@ -47,11 +46,21 @@ public class Tank : KinematicBody2D
         {
             GD.Print("boom");
             CanShoot = false;
+//            GunTimer = (Timer) GetNode("GunTimer");
+            GD.Print("Shooting");
             GunTimer.Start();
+            GD.Print(GunTimer.WaitTime);
             Sprite turret = (Sprite) GetNode("Turret");
             Position2D muzzle = (Position2D) turret.GetNode("Muzzle");
-            Vector2 dir = new Vector2(1, 0).Rotated(turret.Rotation);
+            Vector2 dir = new Vector2(1, 0).Rotated(turret.GlobalRotation);
             EmitSignal("shoot", Bullet, muzzle.GlobalPosition, dir);
         }
     }
+    
+    private void _on_EnemyGunTimer_timeout()
+    {
+        GD.Print("doogan");
+        CanShoot = true;
+    }
 }
+

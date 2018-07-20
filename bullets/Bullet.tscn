@@ -2,7 +2,7 @@
 
 [ext_resource path="res://bullets/Bullet.cs" type="Script" id=1]
 
-[node name="Bullet" type="Area2D" index="0"]
+[node name="Bullet" type="Area2D"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -12,12 +12,15 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Collision", "Transform" ]
+Speed = 0
+Damage = 0
+Lifetime = 0.0
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
 region_enabled = true
-_sections_unfolded = [ "Region" ]
+_sections_unfolded = [ "Animation", "Material", "Region", "Transform", "Visibility", "Z Index" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 

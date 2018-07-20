@@ -32,6 +32,3 @@ public class Map : Node2D
 		b.Start(_position, _direction);
 	}
 }
-
-
-

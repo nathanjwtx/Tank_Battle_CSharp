@@ -31,4 +31,6 @@ autostart = false
 
 [node name="Muzzle" type="Position2D" parent="Turret" index="0"]
 
+[connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]
+
 
